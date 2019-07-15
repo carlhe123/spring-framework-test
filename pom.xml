@@ -14,9 +14,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.carl.springframework</groupId>
-    <artifactId>spring-framework</artifactId>
+    <artifactId>spring-framework-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-framework</name>
+    <name>spring-framework-test</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
