@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.w3.org/1999/xhtml">
+<head>
+    <title>首页</title>
+</head>
+<body>
+<h1>首页</h1>
+<hr>
+<ul>
+    <div shiro:hasPermission="user:vip" >
+        <li><a href="vip/index">会员中心</a></li>
+        <li><a href="user/index">个人中心</a></li>
+    </div>
+    <div shiro:hasPermission="user:guest" >
+        <li><a href="user/index">个人中心</a></li>
+    </div>
+    <li><a href="logout">退出登录</a></li>
+</ul>
+</body>
+</html>

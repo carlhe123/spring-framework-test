@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/abn_tree.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+</head>
+<body>
+<script src="/static/js/angular.js"></script>
+<script src="/static/js/angulartreeview.js"></script>
+<script src="/static/js/test_directive.js"></script>
+
+<div ng-app="demo" ng-controller="demoController">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label class="col-sm-5">已选团队</label>
+            <label class="col-sm-2"></label>
+            <label class="col-sm-5">未选团队:</label>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-5">
+                <div class="col-sm-5" style="max-height: 200px;overflow-y: auto">
+                    <omc-tree
+                            tree-data="treeData"
+                            tree-control="my_tree"
+                            on-select="my_tree_handler(branch)"
+                            initial-selection="Animal"
+                            expand-level="2"
+                            icon-leaf="fa fa-file-o"
+                            icon-expand="fa fa-plus"
+                            icon-collapse="fa fa-minus"
+                    >
+                    </omc-tree>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <button class="btn btn-default" type="button" ng-click="addProdGroup(branch)">添加</button>
+                <br/>
+                <button class="btn btn-default" type="button" ng-click="deleteProdGroup(branch)">删除</button>
+            </div>
+            <div class="col-sm-5">
+                <div class="col-sm-5" style="max-height: 200px;overflow-y: auto">
+                    <omc-tree
+                            tree-data="treeData"
+                            tree-control="my_tree"
+                            on-select="my_tree_handler(branch)"
+                            initial-selection="Animal"
+                            expand-level="2"
+                            icon-leaf="fa fa-file-o"
+                            icon-expand="fa fa-plus"
+                            icon-collapse="fa fa-minus"
+                    >
+                    </omc-tree>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ul class="nav nav-list nav-pills nav-stacked abn-tree">
+    <li ng-repeat="row in tree_rows | filter:{visible:true} track by row.branch.id" ng-animate="'abn-tree-animate'" ng-class="'level-' + {{ row.level }} + (row.branch.selected ? ' active':'') + ' ' +row.classes.join(' ')" class="abn-tree-row">
+        <a ng-click="user_clicks_branch(row.branch)">
+        <i ng-class="row.tree_icon" ng-click="row.branch.expanded = !row.branch.expanded" class="indented tree-icon">
+        </i>
+        <span class="indented tree-name">{{ row.name }} </span>
+        </a>
+    </li>
+</ul>
+<div>{{output}}</div>
+</body>
+</html>
